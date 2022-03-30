@@ -1,5 +1,7 @@
 QT       += core gui
 
+QT += xlsx
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -23,6 +25,9 @@ HEADERS += \
     MainWidget.h
 
 # Default rules for deployment.
+
+TARGET = BendingData-1.0
+
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
