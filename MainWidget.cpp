@@ -2,6 +2,7 @@
 
 MainWidget::MainWidget()
 {
+    setWindowIcon(QIcon(":/logo.ico"));
     setWindowTitle("BendingData-1.0");
     this->resize(300, 400);
 
