@@ -69,10 +69,15 @@ void MainWidget::selectFile()
     }
 
     temp2.remove();
-    xlsx1.saveAs("output.xlsx");
+
+    QString outputPath;
+    //这一步会让 filePath 的长度也减少4，因此要放在后面进行操作，否则会影响前面 filePath 的读取。
+    int index = filePath.length()-4;
+    outputPath = filePath.replace(index, 4, ".xlsx");
+    xlsx1.saveAs(outputPath);
 
     QXlsx::Document xlsx2("model.xlsx");
-    QXlsx::Document xlsx3("output.xlsx");
+    QXlsx::Document xlsx3(outputPath);
 
     for(int i = 2; i < rowCount - 104; i++)
     {
