@@ -3,8 +3,10 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QGroupBox>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QLineEdit>
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QFile>
@@ -21,7 +23,20 @@ public:
     MainWidget();
     void selectFile();
 
+public slots:
+    void updataParam();
+
 private:
-    QPushButton * StartBtn;
+    QGroupBox * menu();
+
+private:
+    QLabel * Text1;
+    QLabel * Text2;
+    QLabel * MM1;
+    QLabel * MM2;
+    QLineEdit * Line1;
+    QLineEdit * Line2;
+    QPushButton * SelectFileBtn;
+    int span, section;
 };
 #endif // MAINWIDGET_H

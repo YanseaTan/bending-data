@@ -4,15 +4,60 @@ MainWidget::MainWidget()
 {
     setWindowIcon(QIcon(":/logo.ico"));
     setWindowTitle("BendingData-1.0");
-    this->resize(300, 400);
+    this->resize(280, 150);
 
-    StartBtn = new QPushButton("开始处理");
+    span = 150;
+    section = 40;
+
+    SelectFileBtn = new QPushButton("选择文件");
+
+    QGroupBox * Menu = menu();
 
     QVBoxLayout *v = new QVBoxLayout(this);
-    v->addWidget(StartBtn);
+    v->addWidget(Menu);
+    v->addWidget(SelectFileBtn);
     this->setLayout(v);
 
-    connect(StartBtn, &QPushButton::clicked, this, &MainWidget::selectFile);
+    connect(SelectFileBtn, &QPushButton::clicked, this, &MainWidget::selectFile);
+}
+
+QGroupBox * MainWidget::menu()
+{
+    QGroupBox * box = new QGroupBox("试验参数");
+
+    Text1 = new QLabel;
+    Text2 = new QLabel;
+    MM1 = new QLabel;
+    MM2 = new QLabel;
+    Text1->setText("四点弯曲的跨度：");
+    Text2->setText("截面高度：");
+    MM1->setText("mm");
+    MM2->setText("mm");
+
+    Line1 = new QLineEdit;
+    Line2 = new QLineEdit;
+    Line1->setText("150");
+    Line2->setText("40");
+
+    QGridLayout * grid = new QGridLayout;
+    grid->addWidget(Text1, 0, 0);
+    grid->addWidget(Line1, 0, 1);
+    grid->addWidget(MM1, 0, 2);
+    grid->addWidget(Text2, 1, 0);
+    grid->addWidget(Line2, 1, 1);
+    grid->addWidget(MM2, 1, 2);
+    box->setLayout(grid);
+
+    connect(Line1, &QLineEdit::editingFinished, this, &MainWidget::updataParam);
+    connect(Line2, &QLineEdit::editingFinished, this, &MainWidget::updataParam);
+
+    return box;
+}
+
+void MainWidget::updataParam()
+{
+    span = Line1->text().toInt();
+    section = Line2->text().toInt();
 }
 
 void MainWidget::selectFile()
@@ -68,6 +113,8 @@ void MainWidget::selectFile()
             xlsx1.write(i, j, num);
         }
     }
+    xlsx1.write(1, 17, span);
+    xlsx1.write(2, 17, section);
 
     temp2.remove();
 
