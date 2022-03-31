@@ -20,3 +20,7 @@ A concrete bending test data processing software
 - 通过`QString::replace()`将`filePath`修改为`outputPath`实现新 *.xlsx 文件创建到原文件同目录下，且命名与原文件保持一致的功能；
 - 通过`QLineEdit::editingFinished`信号触发修改试验参数的函数`updateParam`，实现自定义试验参数的功能；
 - 通过`QMessageBox::information()`提示数据处理已完毕。
+
+## 下载
+
+- [BendingData-1.0](https://pan.baidu.com/s/1lgK7LJbAgPyqKb85xdqhsg?pwd=0000)
