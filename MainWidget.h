@@ -24,7 +24,7 @@ public:
     void selectFile();
 
 public slots:
-    void updataParam();
+    void updateParam();
 
 private:
     QGroupBox * menu();
